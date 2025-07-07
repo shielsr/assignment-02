@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+}
+
+.skip {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    background-color: #000066;
+    color: white;
+}
+
+.skip:focus {
+    position: absolute;
+    left: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+    padding: 8px;
+}
+
+body {
+    background-color: #e6edf5;
+    font-family: "Calibri", "Arial", serif;
+    font-size: 18px;
+    margin: 0px;
+}
+
+
+/* These bits are for the grid-template-areas in #wrapper */
+header {
+    grid-area: header;
+}
+
+nav {
+    grid-area: nav;
+    padding: 0px;
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
+}
+
+
+
+
+#wrapper {
+    padding: 0px 16px;
+    min-height: 100vh;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-rows: 60px auto auto auto;
+    background-color: white;
+    gap: 16px;
+    grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "footer";
+}
+
+
+
+
+
+/* Tablet breakpoint */
+
+@media (min-width: 450px) {
+    body {
+        margin: 0px 24px;
+        max-width: 1142px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #wrapper {
+        padding: 0px 24px;
+        grid-template-rows: 96px auto auto auto;
+
+    }
+}
+
+
+
+/* Desktop breakpoint */
+@media (min-width: 840px) {
+    body {
+        margin: 0px 24px;
+        max-width: 1140px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #wrapper {
+        margin: 0px 24px;
+        display: grid;
+        grid-template-rows: 160px auto auto;
+        grid-template-columns: 140px auto;
+        background-color: white;
+        gap: 24px;
+        grid-template-areas:
+            "header header"
+            "nav main"
+            "footer footer";
+    }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>My page</title>
+    <script src="script.js"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <a href="#main" class="skip">
+                Skip to main content
+            </a>
+            <p>Page name</p>
+        </header>
+        <nav>
+            <p>Nav links</p>
+        </nav>
+        <main>
+            <h2>Submit your form</h2>
+            <form method="get">
+                <fieldset>
+                    <legend>Your details</legend>
+                    <label>
+                        Your full name
+                        <input type="text" name="name" required>
+                    </label>
+                    <label>
+                        Your email address
+                        <input type="email" name="email" required>
+                    </label>
+                </fieldset>
+                <div class="formButtons">
+                    <button type="submit" class="buttonPrimary" onclick="submitMessage();">Submit</button>
+                    <button type="reset" class="buttonSecondary">Reset</button>
+                </div>
+            </form>
+            <div id="formFeedback">
+                <p> </p>
+            </div>
+        </main>
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>
