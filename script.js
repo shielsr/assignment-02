@@ -6,7 +6,7 @@ let blackValue;
 let valuesTotal;
 let myRoll;
 
-function valuesCalc(event) {
+function generateRoll(event) {
     if (event) {
          event.preventDefault();
     }   
@@ -23,12 +23,13 @@ function valuesCalc(event) {
     }
     document.getElementById("total-sweets").innerText = "Total sweets: " + valuesTotal;
     mapFlavours();
+    drawOnCanvas(0); //This draws the pastilles on the canvas
 }
 
 /* This creates an array of sweet flavours, with the amounts of each flavour */
 function mapFlavours(){
   const valueArray = [redValue, yellowValue, greenValue, orangeValue, blackValue];
-  const flavourTypes = [" Red", " Yellow", " Green", " Orange", " Black"];
+  const flavourTypes = ["red", "yellow", "green", "orange", "black"];
   myRoll = [];
 
   valueArray.forEach((count, flav) => {
@@ -37,7 +38,7 @@ function mapFlavours(){
     }
   });
   shuffle(myRoll); /*This shuffles the order to make the packet look more natural */
-  document.getElementById("my-roll").innerText = "My roll: " + myRoll;
+  document.getElementById("my-roll").innerText = "My roll: " + myRoll.join(', '); /* This prints the list, adding some formatting to tidy up the appearance */
 }
 
 
@@ -54,10 +55,37 @@ function shuffle(){
 }
 
 
+/* Drawing the sweets on the canvas */
+let canvas = document.getElementById("pastille-roll");
+let context = canvas.getContext("2d"); 
+
+function drawPastille(x, y, colour = "red"){
+    if (colour==="red") {
+        context.fillStyle = "rgb(200, 0, 0)";
+    } else if (colour === "black") { 
+        context.fillStyle = "rgba(0, 0, 0, 1)"; 
+    } else if (colour === "green") { 
+        context.fillStyle = "rgba(45, 177, 28, 1)"; 
+    } else if (colour === "yellow") { 
+        context.fillStyle = "rgba(231, 202, 36, 1)"; 
+    } else if (colour === "orange") { 
+        context.fillStyle = "rgba(231, 124, 36, 1)"; 
+    } else if (colour === "black") { 
+        context.fillStyle = "rgba(0, 0, 0, 1)"; 
+    }
+    context.fillRect(x, y, 100, 40);
+}
+
+function drawOnCanvas(y){
+    myRoll.forEach((i) => {
+    drawPastille(20, y, i);
+    y = y + 46;
+});
+}
 
 /* This init keeps things tidy */
 function init() {
-document.getElementById("sweet-roll-generator").addEventListener("submit", valuesCalc);
+document.getElementById("sweet-roll-generator").addEventListener("submit", generateRoll);
 }
 
 init();
