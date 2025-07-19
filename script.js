@@ -17,11 +17,26 @@ function valuesCalc(event) {
         return document.getElementById("total-sweets").innerText = "Warning - max number of sweets in a roll is 10.";
     }
     document.getElementById("total-sweets").innerText = "Total sweets: " + valuesTotal;
+    mapFlavours();
 }
 
-function checker(){
-console.log(greenValue);
+/* This creates an array of sweet flavours, with the amounts of each flavour */
+
+function mapFlavours(){
+  const valueArray = [redValue, yellowValue, greenValue];
+  const flavourTypes = ["red", "yellow", "green"];
+  const myRoll = [];
+
+  valueArray.forEach((count, flav) => {
+    for (let i = 0; i < count; i++) {
+      myRoll.push(flavourTypes[flav]);
+    }
+  });
+
+  //console.log("My roll:", myRoll);
+  document.getElementById("my-roll").innerText = "My roll: " + myRoll;
 }
+
 
 /* This init keeps things tidy */
 function init() {
