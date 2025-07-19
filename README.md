@@ -16,8 +16,10 @@ The goal of the project is to allow users to create their own bespoke packet of 
 ## How I went about it
 
 - I started with a simple form with 2 dropdowns and a submit button. I followed the Week 7 Unit 12 lecture recording to create the JS, adding event listeners etc.
-- Once that worked, I wanted to put a max of 10 on the total.
-- Then I wanted to map the amounts of colours to an array with those amounts represented by strings, e.g. if the user selected 3 reds and 2 blues then the array would be red, red, red, blue, blue. I read up on how to 'map' one array into another. I went with a forEach and a for loop.
+- Once that worked, I wanted to put a max of 10 on the total with a warning message.
+- Then I wanted to create a new array containing the amounts of flavours, e.g. if the user selected 3 reds and 2 blues then the array would be red, red, red, blue, blue. I read up on how to map one array into another. I went with a forEach and a for loop.
+- I wanted to randomise the order of the flavours in the array, so it was more like a real roll of sweets. I researched it and found the Fisher-Yates function.
+- The HTML for the dropdowns was becoming unwieldy, so I looked looked up other for options and went with the numerical stepper instead of dropdowns.
 
 
 

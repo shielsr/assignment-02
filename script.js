@@ -1,6 +1,8 @@
 let redValue;
 let yellowValue;
 let greenValue;
+let orangeValue;
+let blackValue;
 let valuesTotal;
 let myRoll;
 
@@ -11,8 +13,10 @@ function valuesCalc(event) {
     redValue = Number(document.getElementById("red-quantity").value);
     yellowValue = Number(document.getElementById("yellow-quantity").value);
     greenValue = Number(document.getElementById("green-quantity").value);
+    orangeValue = Number(document.getElementById("orange-quantity").value);
+    blackValue = Number(document.getElementById("black-quantity").value);
 
-    valuesTotal = redValue + yellowValue + greenValue;
+    valuesTotal = redValue + yellowValue + greenValue + orangeValue + blackValue;
 
     if (valuesTotal>10){
         return document.getElementById("total-sweets").innerText = "Warning - max number of sweets in a roll is 10.";
@@ -23,8 +27,8 @@ function valuesCalc(event) {
 
 /* This creates an array of sweet flavours, with the amounts of each flavour */
 function mapFlavours(){
-  const valueArray = [redValue, yellowValue, greenValue];
-  const flavourTypes = ["red", "yellow", "green"];
+  const valueArray = [redValue, yellowValue, greenValue, orangeValue, blackValue];
+  const flavourTypes = [" Red", " Yellow", " Green", " Orange", " Black"];
   myRoll = [];
 
   valueArray.forEach((count, flav) => {
@@ -47,7 +51,6 @@ function shuffle(){
   myRoll[j] = myRoll[i];
   myRoll[i] = temp;
   }
-  //document.getElementById("my-roll").innerText = "My roll: " + myRoll;
 }
 
 

@@ -23,62 +23,30 @@
         </nav>
         <main>
             <h2>Create your perfect roll of pastilles!</h2>
-            <p> Pick the flavours you want to see in your roll of pastilles. Don't like a particular flavour? Don't add
-                it! Want an entire roll of one flavour? Do it!</p>
+            <p> Pick the flavours you want to see in your roll of pastilles. Choose your favourites, and leave out the ones you don't like!</p>
             <form id="sweet-roll-generator">
                 <label>
                     Red:
-                    <select id="red-quantity" name="reds">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
+                    <input type="number" id="red-quantity" min="0" max="10" step="1">
                 </label>
-
                 <label>
                     Yellow:
-                    <select id="yellow-quantity" name="yellows">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
+                    <input type="number" id="yellow-quantity" min="0" max="10" step="1">
                 </label>
-
                 <label>
                     Green:
-                    <select id="green-quantity" name="greens">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
+                    <input type="number" id="green-quantity" min="0" max="10" step="1">
+                </label>
+                                <label>
+                    Orange:
+                    <input type="number" id="orange-quantity" min="0" max="10" step="1">
+                </label>
+                <label>
+                    Black:
+                    <input type="number" id="black-quantity" min="0" max="10" step="1">
                 </label>
 
-
-                <button type="submit">Make my roll</button>
+                <button type="submit">Generate my roll</button>
             </form>
 
             <p><span id="total-sweets"></span></p>
