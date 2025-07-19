@@ -1,6 +1,7 @@
 User roles:
 - Existing fan
 - Brand new customer
+- Health-conscious customer
 - Gift giver
 
 
@@ -11,12 +12,10 @@ As an existing fan, I want to create a bespoke packet of pastilles with my favou
 As a brand new customer, I want to create a tube with a random combination of all flavours, so I can try all the flavours.
 
 # Health options
-As a gluten-intolerant person, I want to be able to select a gluten-free option, so I can safely eat the product. 
+As a health-conscious customer, I want to have health-related options, so I can order a healthier version of the product.
 
 # Shipping
-As an existing fan, I want to be able to ship my creation to myself, so I can eat what I have designed.
-
-As a brand new customer, I want to be able to ship my creation to myself, so I can eat what I have designed.
+As any user type, I want to be able to ship my creation to myself, so I can eat what I have designed.
 
 # Gifting
 As a gift giver, I want to be able to ship my creation to others as a gift, so that I can share my creation with loved ones.
