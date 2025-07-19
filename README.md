@@ -19,9 +19,11 @@ The goal of the project is to allow users to create their own bespoke packet of 
 - Once that worked, I wanted to put a max of 10 on the total with a warning message.
 - Then I wanted to create a new array containing the amounts of flavours, e.g. if the user selected 3 reds and 2 blues then the array would be red, red, red, blue, blue. I read up on how to map one array into another. I went with a forEach and a for loop.
 - I wanted to randomise the order of the flavours in the array, so it was more like a real roll of sweets. I researched it and found the Fisher-Yates function.
-- The HTML for the dropdowns was becoming unwieldy, so I looked looked up other for options and went with the numerical stepper instead of dropdowns.
-
-
+- The HTML for the dropdowns was becoming unwieldy, so I looked up other options. I went with the numerical stepper instead of dropdowns.
+- I wanted to make a visual/graphical representation of the roll of pastilles. I considered using SVGs but thought it was a good opportunity to use what was covered in the Canvas lessson (Week 9). I worked on 'drawing' the pastilles onto the canvas based on the array.
+- Found a bug where if you reduced the amount of selected sweets, the old rectangles remained on the canvas anyway. Added in clearRect to clear the canvas each time. 
+- I decided to give my pastilles rounded corners. Did some research and switched from .fillRect to .roundRect
+- Added new min/max pastille total of 10. Wrote new error messaging with "add x more" or "remove y" to help the user (this made the above bug irrelevant but it's fixed anyway)
 
 
 ## Instructions
