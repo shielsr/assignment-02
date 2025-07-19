@@ -1,23 +1,33 @@
-function allValues(event) {
+let redValue;
+let yellowValue;
+let greenValue;
+let valuesTotal;
+
+function valuesCalc(event) {
     if (event) {
          event.preventDefault();
     }   
-        const redValue = Number(document.getElementById("red-quantity").value);
+    redValue = Number(document.getElementById("red-quantity").value);
+    yellowValue = Number(document.getElementById("yellow-quantity").value);
+    greenValue = Number(document.getElementById("green-quantity").value);
 
-    const yellowValue = Number(document.getElementById("yellow-quantity").value);
+    valuesTotal = redValue + yellowValue + greenValue;
 
-    const valuesTotal = redValue + yellowValue;
-
-    document.getElementById("total-sweets").innerText = valuesTotal;
-    console.log("Hello world")
+    if (valuesTotal>10){
+        return document.getElementById("total-sweets").innerText = "Warning - max number of sweets in a roll is 10.";
+    }
+    document.getElementById("total-sweets").innerText = "Total sweets: " + valuesTotal;
 }
 
+function checker(){
+console.log(greenValue);
+}
 
+/* This init keeps things tidy */
 function init() {
-
-document.getElementById("sweet-roll-generator").addEventListener("submit", allValues);
-
-allValues();
+document.getElementById("sweet-roll-generator").addEventListener("submit", valuesCalc);
 }
 
 init();
+
+
