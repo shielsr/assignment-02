@@ -1,21 +1,23 @@
+function allValues(event) {
+    if (event) {
+         event.preventDefault();
+    }   
+        const redValue = Number(document.getElementById("red-quantity").value);
 
+    const yellowValue = Number(document.getElementById("yellow-quantity").value);
 
+    const valuesTotal = redValue + yellowValue;
 
-function allValues() {
-const redValue = Number(document.getElementById("redQuantity").value);
-
-const yellowValue = Number(document.getElementById("yellowQuantity").value);
-
-const valuesTotal = redValue + yellowValue;
-
-document.getElementById("totalSweets").innerText = valuesTotal;
+    document.getElementById("total-sweets").innerText = valuesTotal;
+    console.log("Hello world")
 }
 
 
-//Array
-const valuesTotal = [
-    redValue, yellowValue
-];
+function init() {
 
+document.getElementById("sweet-roll-generator").addEventListener("submit", allValues);
 
-document.getElementById("id-of-form").addEventListner("submit", allValues);
+allValues();
+}
+
+init();
