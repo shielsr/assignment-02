@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My page</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -22,49 +22,67 @@
             <p>Nav links</p>
         </nav>
         <main>
-            <h2>Submit your form</h2>
-
-            <form id="id-of-form">
+            <h2>Create your perfect roll of pastilles!</h2>
+            <p> Pick the flavours you want to see in your roll of pastilles. Don't like a particular flavour? Don't add
+                it! Want an entire roll of one flavour? Do it!</p>
+            <form id="sweet-roll-generator">
                 <label>
                     Red:
-                <select id="redQuantity" name="redQuantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-                                </label>
+                    <select id="red-quantity" name="reds">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </label>
 
                 <label>
                     Yellow:
-                <select id="yellowQuantity" name="yellowQuantity">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
+                    <select id="yellow-quantity" name="yellows">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </label>
+
+                <label>
+                    Green:
+                    <select id="green-quantity" name="greens">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
                 </label>
 
 
-                <button type="submit">Button label</button>
+                <button type="submit">Make my roll</button>
             </form>
 
-            <p>Total sweets: <span id="totalSweets"></span> </p>
-
+            <p><span id="total-sweets"></span></p>
+            <p><span id="my-roll"></span></p>
         </main>
         <footer>
         </footer>

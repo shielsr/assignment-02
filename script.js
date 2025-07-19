@@ -22,7 +22,6 @@ function valuesCalc(event) {
 }
 
 /* This creates an array of sweet flavours, with the amounts of each flavour */
-
 function mapFlavours(){
   const valueArray = [redValue, yellowValue, greenValue];
   const flavourTypes = ["red", "yellow", "green"];
@@ -33,10 +32,12 @@ function mapFlavours(){
       myRoll.push(flavourTypes[flav]);
     }
   });
+  shuffle(myRoll); /*This shuffles the order to make the packet look more natural */
   document.getElementById("my-roll").innerText = "My roll: " + myRoll;
 }
 
-/* Shuffle the order of the flavours in the array */
+
+/* Helper function to shuffle the order of the flavours in the array, using the Fisher-Yates shuffle */
 
 function shuffle(){
   let i = myRoll.length, j, temp;
@@ -46,7 +47,7 @@ function shuffle(){
   myRoll[j] = myRoll[i];
   myRoll[i] = temp;
   }
-  document.getElementById("my-roll").innerText = "My roll: " + myRoll;
+  //document.getElementById("my-roll").innerText = "My roll: " + myRoll;
 }
 
 
@@ -54,7 +55,6 @@ function shuffle(){
 /* This init keeps things tidy */
 function init() {
 document.getElementById("sweet-roll-generator").addEventListener("submit", valuesCalc);
-document.getElementById("shuffle-button").addEventListener("click", shuffle);
 }
 
 init();
