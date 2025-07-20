@@ -90,11 +90,14 @@ form input {
 #order-form {
     max-width:600px;
     display: grid;
-  grid-template-columns: 160px 1fr; /* 1 column for labels, 1 for inputs */
-  gap: 24px;
+    grid-template-columns: 100px 1fr; /* 1 column for labels, 1 for inputs */
+    gap: 24px;
 }
 
 
+#results {
+    padding-top:24px;
+}
 
 .error-text {
     color:rgb(173, 0, 0);
@@ -106,6 +109,15 @@ form input {
     border-radius: 8px;
     border:0px;
     margin: 24px 0px;
+}
+
+.button-primary:hover {
+    background-color: #0d0d9c;
+    color:white;
+}
+
+.button-primary:focus {
+    outline: 2px solid black;
 }
 
 .button-primary {

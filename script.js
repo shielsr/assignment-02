@@ -33,7 +33,10 @@ function generateRoll(event) {
     totalSweets.innerText = "Total sweets: " + valuesTotal;
     mapFlavours(); // Updates the myRoll array with the selected colours.
     drawOnCanvas(); // Draws the pastilles on the canvas.
-    document.getElementById("results").scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("section-2").style.display='block'; // Reveal the order form
+    if (window.innerWidth <= 450) {
+        document.getElementById("results").scrollIntoView({ behavior: "smooth" });
+    }
 }
 
 /* This is where I create a new array to map out how many different flavours (and in what amounts) are in the whole roll */
@@ -90,22 +93,20 @@ function drawPastille(x, y, colour = "red"){
 
 function drawOnCanvas(){
     myRoll.forEach((colour, index) => {
-    drawPastille(60, index*46, colour);  // The index*46 nudges the pen down 46px to draw the next pastille underneath the previous one
+    drawPastille(60, 6+index*46, colour);  // The index*46 nudges the pen down 46px to draw the next pastille underneath the previous one. The '6+' is nudges the first one down 6 pixels so it's not touching the top of the canvas.
 });
 }
 
-function sectionTwo() {
-    console.log("Hello world");
-    document.getElementById("section-2").style.display='block'; //to show
-document.getElementById("order-button").style.display='none'; //to hide
-  document.getElementById("section-2").scrollIntoView({ behavior: 'smooth' });
+
+function thanksForYourOrder() {
+    alert("Thanks for your order!");
 }
 
 
 /* This init keeps things tidy */
 function init() {
 document.getElementById("sweet-roll-generator").addEventListener("submit", generateRoll);
-document.getElementById("order-button").addEventListener("click", sectionTwo);
+document.getElementById("sweet-order-form").addEventListener("submit", thanksForYourOrder);
 }
 
 init();

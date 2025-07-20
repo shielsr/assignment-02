@@ -22,36 +22,71 @@
             <p>Nav links</p>
         </nav>
         <main>
-            <h2>Create your perfect roll of pastilles!</h2>
-            <p> Pick the flavours you want to see in your roll of pastilles. Choose your favourites, and leave out the ones you don't like!</p>
-            <form id="sweet-roll-generator">
-                <label>
-                    Red:
-                    <input type="number" id="red-quantity" min="0" max="10" step="1">
-                </label>
-                <label>
-                    Yellow:
-                    <input type="number" id="yellow-quantity" min="0" max="10" step="1">
-                </label>
-                <label>
-                    Green:
-                    <input type="number" id="green-quantity" min="0" max="10" step="1">
-                </label>
-                                <label>
-                    Orange:
-                    <input type="number" id="orange-quantity" min="0" max="10" step="1">
-                </label>
-                <label>
-                    Black:
-                    <input type="number" id="black-quantity" min="0" max="10" step="1">
-                </label>
+            <h1>Create your perfect roll of pastilles!</h1>
+            <div id="form-and-results">
+                <div id="form-and-intro">
+                    <p> Pick the flavours you want to see in your roll of pastilles. Choose your favourites, and leave
+                        out the
+                        ones you don't like!</p>
+                    <form id="sweet-roll-generator">
+                        <div id="flavour-form">
+                            <label>
+                                Red:
+                            </label>
+                            <input type="number" id="red-quantity" min="0" max="10" step="1">
+                            <label>
+                                Yellow:
+                            </label>
+                            <input type="number" id="yellow-quantity" min="0" max="10" step="1">
+                            <label>
+                                Green:
+                            </label>
+                            <input type="number" id="green-quantity" min="0" max="10" step="1">
+                            <label>
+                                Orange:
+                            </label>
+                            <input type="number" id="orange-quantity" min="0" max="10" step="1">
+                            <label>
+                                Black:
+                            </label>
+                            <input type="number" id="black-quantity" min="0" max="10" step="1">
+                        </div>
+                        <p><span id="error-message" class="error-text"></span></p>
+                        <button type="submit" class="button button-primary">Generate my roll</button>
+                    </form>
+                </div>
+                <div id="results">
+                    <canvas height="466" width="212" id="pastille-roll"></canvas>
+                    <p><span id="total-sweets"></span></p>
 
-                <button type="submit">Generate my roll</button>
-            </form>
-
-            <p><span id="total-sweets"></span></p>
-            <p><span id="my-roll"></span></p>
-            <canvas height="520" width="500" id="pastille-roll"></canvas>
+                </div>
+            </div>
+            <div id="section-2">
+                <h2>Order your pastilles</h2>
+                <form id="sweet-order-form">
+                    <div id="order-form">
+                        <label>Your roll: </label>
+                        <p><span id="my-roll"></span></p>
+                        <label>
+                            Your full name:
+                        </label>
+                        <input type="text" name="name" required>
+                        <label>
+                            Your address:
+                        </label>
+                        <input type="text" name="address" required>
+                        <label>
+                            Email address:
+                        </label>
+                        <input type="text" name="email" required>
+                        <label>
+                            Phone number
+                        </label>
+                        <input type="text" name="phone" required>
+                    </div>
+                    <button type="submit" class="button button-primary">Place order</button>
+                </form>
+            </div>
         </main>
         <footer>
         </footer>
