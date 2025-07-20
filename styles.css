@@ -150,6 +150,7 @@ form input {
 
 #section-2 {
     display:none;
+    height: auto;
 }
 
 /* Tablet breakpoint */

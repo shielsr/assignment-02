@@ -24,7 +24,7 @@ The goal of the project is to allow users to create their own bespoke packet of 
 - Found a bug where if you reduced the amount of selected sweets, the old rectangles remained on the canvas anyway. Added in clearRect to clear the canvas each time. 
 - I decided to give my pastilles rounded corners. Did some research and switched from .fillRect to .roundRect
 - Added new min/max pastille total of 10. Wrote new error messaging with "add x more" or "remove y" to help the user (this made the above bug irrelevant but it's fixed anyway)
-
+- Made big style changes: Styled the form. Styled the buttons including with focus states. Add background 'tinfoil' image to the canvas. Add an order form, which is only revealed after the user has generated their first roll of pastilles. Need to fix a bug on mobile where the order form isn't revealed.
 
 ## Instructions
 
