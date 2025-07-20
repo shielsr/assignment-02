@@ -79,6 +79,7 @@ form input {
   padding: 0.5rem;
   border: 1px solid #8b8b8b;
   border-radius: 4px;
+  font-size:16px;
 }
 
 #flavour-form {
