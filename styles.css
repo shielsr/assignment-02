@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+/* Skip link */
 .skip {
     position: absolute;
     left: -10000px;
@@ -69,8 +70,75 @@ footer {
 }
 
 
+/* Form */
+form label {
+  align-self: center;
+  font-weight: bold;
+}
+form input {
+  padding: 0.5rem;
+  border: 1px solid #8b8b8b;
+  border-radius: 4px;
+}
+
+#flavour-form {
+  display: grid;
+  grid-template-columns: 56px 80px; /* 1 column for labels, 1 for inputs */
+  gap: 24px;
+}
+
+#order-form {
+    max-width:600px;
+    display: grid;
+  grid-template-columns: 160px 1fr; /* 1 column for labels, 1 for inputs */
+  gap: 24px;
+}
 
 
+
+.error-text {
+    color:rgb(173, 0, 0);
+}
+
+.button {
+    padding: 12px 80px;
+    font-size:16px;
+    border-radius: 8px;
+    border:0px;
+    margin: 24px 0px;
+}
+
+.button-primary {
+    background-color: #000066;
+    color:white;
+}
+
+.button-secondary {
+    background-color: aquamarine;
+
+}
+
+.centre-button {
+    display:flex;
+    justify-content:center;
+}
+
+    #form-and-results
+    {
+        display:grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        background-color: white;
+        gap: 40px;
+    }
+
+#pastille-roll {
+    background-image: url("images/tinfoil.webp");
+}
+
+#section-2 {
+    display:none;
+}
 
 /* Tablet breakpoint */
 
@@ -87,6 +155,17 @@ footer {
         grid-template-rows: 96px auto auto auto;
 
     }
+
+    #form-and-results
+    {
+        display:grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto;
+        background-color: white;
+        gap: 40px;
+
+    }
+
 }
 
 

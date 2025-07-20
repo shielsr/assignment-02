@@ -16,21 +16,24 @@ function generateRoll(event) {
     greenValue = Number(document.getElementById("green-quantity").value);
     orangeValue = Number(document.getElementById("orange-quantity").value);
     blackValue = Number(document.getElementById("black-quantity").value);
-
     valuesTotal = redValue + yellowValue + greenValue + orangeValue + blackValue;
 
+    const totalSweets = document.getElementById("total-sweets");
+    errorMessage = document.getElementById("error-message");
+
+    context.clearRect(0, 0, canvas.width, canvas.height); // Wipe the canvas clean each time
+    document.getElementById("my-roll").innerText = ""; // Wipe the printed array text
+    errorMessage.innerText = "";
+
     if (valuesTotal>10){
-        context.clearRect(0, 0, canvas.width, canvas.height); // Wipe the canvas clean each time
-        document.getElementById("my-roll").innerText = "";
-        return document.getElementById("total-sweets").innerText = "Warning - maximum number of sweets in a roll is 10.\n Please remove " + (valuesTotal-10) + " sweets.";
+        return errorMessage.innerText = "Warning - maximum number of sweets in a roll is 10.\n Please remove " + (valuesTotal-10) + " sweets.";
     } else if (valuesTotal<10){
-        context.clearRect(0, 0, canvas.width, canvas.height); // Wipe the canvas clean each time
-        document.getElementById("my-roll").innerText = "";
-        return document.getElementById("total-sweets").innerText = "Warning - minimum number of sweets is 10.\n Please add " + (10-valuesTotal) + " more.";
+        return errorMessage.innerText = "Warning - minimum number of sweets is 10.\n Please add " + (10-valuesTotal) + " more.";
     }
-    document.getElementById("total-sweets").innerText = "Total sweets: " + valuesTotal;
-    mapFlavours();
-    drawOnCanvas(0); //This draws the pastilles on the canvas. The zero is the starting point on the y axis.
+    totalSweets.innerText = "Total sweets: " + valuesTotal;
+    mapFlavours(); // Updates the myRoll array with the selected colours.
+    drawOnCanvas(); // Draws the pastilles on the canvas.
+    document.getElementById("results").scrollIntoView({ behavior: 'smooth' });
 }
 
 /* This is where I create a new array to map out how many different flavours (and in what amounts) are in the whole roll */
@@ -44,8 +47,8 @@ function mapFlavours(){
       myRoll.push(flavourTypes[flav]);
     }
   });
-  shuffle(myRoll); //This shuffles the order to make the roll of sweets look more natural
-  document.getElementById("my-roll").innerText = "My roll: " + myRoll.join(', '); /* This prints the list, adding some formatting to tidy up the appearance */
+  shuffle(myRoll); //This shuffles the order to make the picture look more natural
+  document.getElementById("my-roll").innerText = myRoll.join(', '); /* This prints the list, adding some formatting to tidy up the appearance */
 }
 
 
@@ -80,23 +83,29 @@ function drawPastille(x, y, colour = "red"){
     } else if (colour === "black") { 
         context.fillStyle = "rgba(0, 0, 0, 1)"; 
     }
-    //context.fillRect(x, y, 100, 40);
     context.beginPath();
-    context.roundRect(x,y,100,40,[4]);
+    context.roundRect(x,y,100,40,[4]); // New rounded corner rectangle
     context.fill();
 }
 
-function drawOnCanvas(y){
-    context.clearRect(0, 0, canvas.width, canvas.height); // Wipe the canvas clean each time
-    myRoll.forEach((i) => {
-    drawPastille(20, y, i);
-    y = y + 46;  // Nudges the pen down to draw the next pastille underneath the previous one
+function drawOnCanvas(){
+    myRoll.forEach((colour, index) => {
+    drawPastille(60, index*46, colour);  // The index*46 nudges the pen down 46px to draw the next pastille underneath the previous one
 });
 }
+
+function sectionTwo() {
+    console.log("Hello world");
+    document.getElementById("section-2").style.display='block'; //to show
+document.getElementById("order-button").style.display='none'; //to hide
+  document.getElementById("section-2").scrollIntoView({ behavior: 'smooth' });
+}
+
 
 /* This init keeps things tidy */
 function init() {
 document.getElementById("sweet-roll-generator").addEventListener("submit", generateRoll);
+document.getElementById("order-button").addEventListener("click", sectionTwo);
 }
 
 init();
