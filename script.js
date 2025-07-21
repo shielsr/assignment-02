@@ -6,18 +6,33 @@ let blackValue;
 let valuesTotal;
 let myRoll;
 
-/* The main function, triggered by the main button */
-function generateRoll(event) {
-    if (event) {
-         event.preventDefault();  // From the lecture, this stops the form resetting
-    }   
+/* Sum the total of all inputted numbers */
+function getTotalAmounts() {
     redValue = Number(document.getElementById("red-quantity").value);
     yellowValue = Number(document.getElementById("yellow-quantity").value);
     greenValue = Number(document.getElementById("green-quantity").value);
     orangeValue = Number(document.getElementById("orange-quantity").value);
     blackValue = Number(document.getElementById("black-quantity").value);
     valuesTotal = redValue + yellowValue + greenValue + orangeValue + blackValue;
+    console.log(valuesTotal);
+    document.getElementById("live-count-number").innerText = valuesTotal;
+    if (valuesTotal>10){
+        document.getElementById("live-count").classList.remove('success-text');
+        document.getElementById("live-count").classList.add('error-text'); 
+    } else if (valuesTotal===10) {
+                document.getElementById("live-count").classList.remove('error-text');
+                document.getElementById("live-count").classList.add('success-text');
+    } else if (valuesTotal<10) {
+                document.getElementById("live-count").classList.remove('error-text');
+                                document.getElementById("live-count").classList.remove('success-text'); 
+    } 
+}
 
+/* The main function, triggered by the main button */
+function generateRoll(event) {
+    if (event) {
+         event.preventDefault();  // From the lecture, this stops the form resetting
+    }   
     const totalSweets = document.getElementById("total-sweets");
     errorMessage = document.getElementById("error-message");
 
@@ -26,7 +41,7 @@ function generateRoll(event) {
     errorMessage.innerText = "";
 
     if (valuesTotal>10){
-        return errorMessage.innerText = "Warning - maximum number of sweets in a roll is 10.\n Please remove " + (valuesTotal-10) + " sweets.";
+        return errorMessage.innerText = "Warning - maximum number of sweets in a roll is 10. Please remove " + (valuesTotal-10) + " sweets.";
     } else if (valuesTotal<10){
         return errorMessage.innerText = "Warning - minimum number of sweets is 10.\n Please add " + (10-valuesTotal) + " more.";
     }
@@ -103,10 +118,12 @@ function thanksForYourOrder() {
 }
 
 
+
 /* This init keeps things tidy */
 function init() {
 document.getElementById("sweet-roll-generator").addEventListener("submit", generateRoll);
 document.getElementById("sweet-order-form").addEventListener("submit", thanksForYourOrder);
+document.getElementById("flavour-form").addEventListener("input", getTotalAmounts);
 }
 
 init();
