@@ -102,6 +102,12 @@ form input {
 
 .error-text {
     color:rgb(173, 0, 0);
+    font-weight:600;
+}
+
+.success-text{
+    color:rgb(0, 65, 0);
+    font-weight:600;
 }
 
 .button {
