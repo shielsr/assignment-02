@@ -16,23 +16,23 @@ function getTotalAmounts() {
     valuesTotal = redValue + yellowValue + greenValue + orangeValue + blackValue;
     console.log(valuesTotal);
     document.getElementById("live-count-number").innerText = valuesTotal;
-    if (valuesTotal>10){
+    if (valuesTotal > 10) {
         document.getElementById("live-count").classList.remove('success-text');
-        document.getElementById("live-count").classList.add('error-text'); 
-    } else if (valuesTotal===10) {
-                document.getElementById("live-count").classList.remove('error-text');
-                document.getElementById("live-count").classList.add('success-text');
-    } else if (valuesTotal<10) {
-                document.getElementById("live-count").classList.remove('error-text');
-                                document.getElementById("live-count").classList.remove('success-text'); 
-    } 
+        document.getElementById("live-count").classList.add('error-text');
+    } else if (valuesTotal === 10) {
+        document.getElementById("live-count").classList.remove('error-text');
+        document.getElementById("live-count").classList.add('success-text');
+    } else if (valuesTotal < 10) {
+        document.getElementById("live-count").classList.remove('error-text');
+        document.getElementById("live-count").classList.remove('success-text');
+    }
 }
 
 /* The main function, triggered by the main button */
 function generateRoll(event) {
     if (event) {
-         event.preventDefault();  // From the lecture, this stops the form resetting
-    }   
+        event.preventDefault();  // From the lecture, this stops the form resetting
+    }
     const totalSweets = document.getElementById("total-sweets");
     errorMessage = document.getElementById("error-message");
 
@@ -40,92 +40,106 @@ function generateRoll(event) {
     document.getElementById("my-roll").innerText = ""; // Wipe the printed array text
     errorMessage.innerText = "";
 
-    if (valuesTotal>10){
-        return errorMessage.innerText = "Warning - maximum number of sweets in a roll is 10. Please remove " + (valuesTotal-10) + " sweets.";
-    } else if (valuesTotal<10){
-        return errorMessage.innerText = "Warning - minimum number of sweets is 10.\n Please add " + (10-valuesTotal) + " more.";
+    if (valuesTotal > 10) {
+        return errorMessage.innerText = "Warning - maximum number of sweets in a roll is 10. Please remove " + (valuesTotal - 10) + " sweets.";
+    } else if (valuesTotal < 10) {
+        return errorMessage.innerText = "Warning - minimum number of sweets is 10.\n Please add " + (10 - valuesTotal) + " more.";
     }
     totalSweets.innerText = "Total sweets: " + valuesTotal;
     mapFlavours(); // Updates the myRoll array with the selected colours.
     drawOnCanvas(); // Draws the pastilles on the canvas.
-    document.getElementById("section-2").style.display='block'; // Reveal the order form
+    document.getElementById("section-2").style.display = 'block'; // Reveal the order form
     if (window.innerWidth <= 450) {
         document.getElementById("results").scrollIntoView({ behavior: "smooth" });
     }
 }
 
 /* This is where I create a new array to map out how many different flavours (and in what amounts) are in the whole roll */
-function mapFlavours(){
-  const valueArray = [redValue, yellowValue, greenValue, orangeValue, blackValue];
-  const flavourTypes = ["red", "yellow", "green", "orange", "black"];
-  myRoll = [];
+function mapFlavours() {
+    const valueArray = [redValue, yellowValue, greenValue, orangeValue, blackValue];
+    const flavourTypes = ["red", "yellow", "green", "orange", "black"];
+    myRoll = [];
 
-  valueArray.forEach((count, flav) => {
-    for (let i = 0; i < count; i++) {
-      myRoll.push(flavourTypes[flav]);
-    }
-  });
-  shuffle(myRoll); //This shuffles the order to make the picture look more natural
-  document.getElementById("my-roll").innerText = myRoll.join(', '); /* This prints the list, adding some formatting to tidy up the appearance */
+    valueArray.forEach((count, flav) => {
+        for (let i = 0; i < count; i++) {
+            myRoll.push(flavourTypes[flav]);
+        }
+    });
+    shuffle(myRoll); //This shuffles the order to make the picture look more natural
+    document.getElementById("my-roll").innerText = myRoll.join(', '); /* This prints the list, adding some formatting to tidy up the appearance */
 }
 
 
 
 /* Helper function to shuffle the order of the flavours in the array, using the Fisher-Yates shuffle */
-function shuffle(){
-  let i = myRoll.length, j, temp;
-  while (--i > 0) {
-  j = Math.floor(Math.random () * (i+1));
-  temp = myRoll[j];
-  myRoll[j] = myRoll[i];
-  myRoll[i] = temp;
-  }
+function shuffle() {
+    let i = myRoll.length, j, temp;
+    while (--i > 0) {
+        j = Math.floor(Math.random() * (i + 1));
+        temp = myRoll[j];
+        myRoll[j] = myRoll[i];
+        myRoll[i] = temp;
+    }
 }
 
 
 /* Drawing the sweets on the canvas */
 let canvas = document.getElementById("pastille-roll");
-let context = canvas.getContext("2d"); 
+let context = canvas.getContext("2d");
 
-function drawPastille(x, y, colour = "red"){
-    if (colour==="red") {
-        context.fillStyle = "rgb(200, 0, 0)";
-    } else if (colour === "black") { 
-        context.fillStyle = "rgba(0, 0, 0, 1)"; 
-    } else if (colour === "green") { 
-        context.fillStyle = "rgba(45, 177, 28, 1)"; 
-    } else if (colour === "yellow") { 
-        context.fillStyle = "rgba(231, 202, 36, 1)"; 
-    } else if (colour === "orange") { 
-        context.fillStyle = "rgba(231, 124, 36, 1)"; 
-    } else if (colour === "black") { 
-        context.fillStyle = "rgba(0, 0, 0, 1)"; 
+/* Call the PNGs and add them depending on the colour */
+function drawPhoto(x,y,colour,width,height) {
+    const pastillePng = new Image();
+    if (colour === "yellow") {
+            pastillePng.src = "images/yellow01.png";
+    } else if (colour === "orange") {
+            pastillePng.src = "images/orange01.png";
     }
-    context.beginPath();
-    context.roundRect(x,y,100,40,[4]); // New rounded corner rectangle
-    context.fill();
+        pastillePng.onload = function(){
+    context.drawImage(pastillePng, x, y, 100, 40);
+         }
+    
 }
 
-function drawOnCanvas(){
-    myRoll.forEach((colour, index) => {
-    drawPastille(60, 6+index*46, colour);  // The index*46 nudges the pen down 46px to draw the next pastille underneath the previous one. The '6+' is nudges the first one down 6 pixels so it's not touching the top of the canvas.
-});
-}
+function drawPastille(x, y, colour = "red", width, height) {
+    if (colour === "red") {
+        context.fillStyle = "rgb(200, 0, 0)";
+    } else if (colour === "black") {
+        context.fillStyle = "rgba(0, 0, 0, 1)";
+    } else if (colour === "green") {
+        context.fillStyle = "rgba(45, 177, 28, 1)";
+    } else if (colour === "yellow") {
+        context.fillStyle = "rgba(231, 202, 36, 1)"; 
+        } else if (colour === "orange") {
+            context.fillStyle = "rgba(231, 124, 36, 1)";
+        } else if (colour === "black") {
+            context.fillStyle = "rgba(0, 0, 0, 1)";
+        }
+        context.beginPath();
+        context.roundRect(x, y, 100, 40, [4]); // New rounded corner rectangle
+        context.fill();
+    }
+
+    function drawOnCanvas() {
+        myRoll.forEach((colour, index) => {
+            drawPhoto(60, 6 + index * 46, colour, 100, 40);  // The index*46 nudges the pen down 46px to draw the next pastille underneath the previous one. The '6+' is nudges the first one down 6 pixels so it's not touching the top of the canvas.
+        });
+    }
 
 
-function thanksForYourOrder() {
-    alert("Thanks for your order!");
-}
+    function thanksForYourOrder() {
+        alert("Thanks for your order!");
+    }
 
 
 
-/* This init keeps things tidy */
-function init() {
-document.getElementById("sweet-roll-generator").addEventListener("submit", generateRoll);
-document.getElementById("sweet-order-form").addEventListener("submit", thanksForYourOrder);
-document.getElementById("flavour-form").addEventListener("input", getTotalAmounts);
-}
+    /* This init keeps things tidy */
+    function init() {
+        document.getElementById("sweet-roll-generator").addEventListener("submit", generateRoll);
+        document.getElementById("sweet-order-form").addEventListener("submit", thanksForYourOrder);
+        document.getElementById("flavour-form").addEventListener("input", getTotalAmounts);
+    }
 
-init();
+    init();
 
 
