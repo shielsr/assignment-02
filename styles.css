@@ -152,7 +152,8 @@ form input {
     }
 
 #pastille-roll {
-    background-image: url("images/tinfoil.webp");
+    background-image: url("images/wrapper.png");
+    background-size: contain;
 }
 
 #section-2 {

@@ -14,15 +14,19 @@ function getTotalAmounts() {
     orangeValue = Number(document.getElementById("orange-quantity").value);
     blackValue = Number(document.getElementById("black-quantity").value);
     valuesTotal = redValue + yellowValue + greenValue + orangeValue + blackValue;
-    console.log(valuesTotal);
+    liveCounting();
+}
+
+/* Updating the count in real time */
+function liveCounting(){
     document.getElementById("live-count-number").innerText = valuesTotal;
-    if (valuesTotal > 10) {
+    if (valuesTotal > 12) {
         document.getElementById("live-count").classList.remove('success-text');
         document.getElementById("live-count").classList.add('error-text');
-    } else if (valuesTotal === 10) {
+    } else if (valuesTotal === 12) {
         document.getElementById("live-count").classList.remove('error-text');
         document.getElementById("live-count").classList.add('success-text');
-    } else if (valuesTotal < 10) {
+    } else if (valuesTotal < 12) {
         document.getElementById("live-count").classList.remove('error-text');
         document.getElementById("live-count").classList.remove('success-text');
     }
@@ -38,21 +42,24 @@ function generateRoll(event) {
 
     context.clearRect(0, 0, canvas.width, canvas.height); // Wipe the canvas clean each time
     document.getElementById("my-roll").innerText = ""; // Wipe the printed array text
-    errorMessage.innerText = "";
-
-    if (valuesTotal > 10) {
-        return errorMessage.innerText = "Warning - maximum number of sweets in a roll is 10. Please remove " + (valuesTotal - 10) + " sweets.";
-    } else if (valuesTotal < 10) {
-        return errorMessage.innerText = "Warning - minimum number of sweets is 10.\n Please add " + (10 - valuesTotal) + " more.";
+    
+    errorMessage.innerText = ""; // Wipe the error text
+    if (valuesTotal > 12) {
+        return errorMessage.innerText = "Warning - maximum number of sweets in a roll is 12. Please remove " + (valuesTotal - 12) + " sweets.";
+    } else if (valuesTotal < 12) {
+        return errorMessage.innerText = "Warning - minimum number of sweets is 12.\n Please add " + (12 - valuesTotal) + " more.";
     }
+
     totalSweets.innerText = "Total sweets: " + valuesTotal;
     mapFlavours(); // Updates the myRoll array with the selected colours.
     drawOnCanvas(); // Draws the pastilles on the canvas.
     document.getElementById("section-2").style.display = 'block'; // Reveal the order form
     if (window.innerWidth <= 450) {
-        document.getElementById("results").scrollIntoView({ behavior: "smooth" });
+        document.getElementById("results").scrollIntoView({ behavior: "smooth" }); // Autoscroll to the pastilles on mobile
     }
 }
+
+
 
 /* This is where I create a new array to map out how many different flavours (and in what amounts) are in the whole roll */
 function mapFlavours() {
@@ -71,7 +78,7 @@ function mapFlavours() {
 
 
 
-/* Helper function to shuffle the order of the flavours in the array, using the Fisher-Yates shuffle */
+/* Shuffle the order of the flavours in the array, using the Fisher-Yates shuffle */
 function shuffle() {
     let i = myRoll.length, j, temp;
     while (--i > 0) {
@@ -82,50 +89,28 @@ function shuffle() {
     }
 }
 
-
+/* CANVAS START */
 /* Drawing the sweets on the canvas */
 let canvas = document.getElementById("pastille-roll");
 let context = canvas.getContext("2d");
 
-/* Call the PNGs and add them depending on the colour */
+/* Call a PNGs depending on the colour */
 function drawPhoto(x,y,colour,width,height) {
     const pastillePng = new Image();
-    if (colour === "yellow") {
-            pastillePng.src = "images/yellow01.png";
-    } else if (colour === "orange") {
-            pastillePng.src = "images/orange01.png";
-    }
+            pastillePng.src = "images/" + colour + "01.png";
         pastillePng.onload = function(){
-    context.drawImage(pastillePng, x, y, 100, 40);
+    context.drawImage(pastillePng, x, y, width, height);
          }
     
 }
 
-function drawPastille(x, y, colour = "red", width, height) {
-    if (colour === "red") {
-        context.fillStyle = "rgb(200, 0, 0)";
-    } else if (colour === "black") {
-        context.fillStyle = "rgba(0, 0, 0, 1)";
-    } else if (colour === "green") {
-        context.fillStyle = "rgba(45, 177, 28, 1)";
-    } else if (colour === "yellow") {
-        context.fillStyle = "rgba(231, 202, 36, 1)"; 
-        } else if (colour === "orange") {
-            context.fillStyle = "rgba(231, 124, 36, 1)";
-        } else if (colour === "black") {
-            context.fillStyle = "rgba(0, 0, 0, 1)";
-        }
-        context.beginPath();
-        context.roundRect(x, y, 100, 40, [4]); // New rounded corner rectangle
-        context.fill();
-    }
-
     function drawOnCanvas() {
         myRoll.forEach((colour, index) => {
-            drawPhoto(60, 6 + index * 46, colour, 100, 40);  // The index*46 nudges the pen down 46px to draw the next pastille underneath the previous one. The '6+' is nudges the first one down 6 pixels so it's not touching the top of the canvas.
+            drawPhoto(96, 16 + index * 43, colour, 94, 50);  // The index*50 nudges the pen down a multiple of 50px to draw the next pastille underneath the previous one. The '10+' is nudges the first one down 6 pixels so it's not touching the top of the canvas.
         });
     }
 
+/* CANVAS END */
 
     function thanksForYourOrder() {
         alert("Thanks for your order!");
@@ -133,7 +118,7 @@ function drawPastille(x, y, colour = "red", width, height) {
 
 
 
-    /* This init keeps things tidy */
+/* This init keeps things tidy */
     function init() {
         document.getElementById("sweet-roll-generator").addEventListener("submit", generateRoll);
         document.getElementById("sweet-order-form").addEventListener("submit", thanksForYourOrder);

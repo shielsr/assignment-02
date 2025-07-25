@@ -28,6 +28,7 @@ The goal of the project is to allow users to create their own bespoke packet of 
 - Fixed the bug with height:auto. iOS was also 'zooming in' on input fields, which I solved by making the input text 16px. Also added validation for email and number fields on the order form.
 - Added a 'live count' of the sweets as they're added along with error styling.
 - Replaced the vector rectangles on the canvas with PNG photos of actual pastilles. I removed the image backgrounds in Figma. I had to rewrite the entire 'drawPastille' function to work with images instead of vectors.
+- I started using if-else statements to call the different pngs, but it was too messy. Instead, I concatenated the image src using the colour parameter, which tidied up the function nicely.
 
 ## Instructions
 
