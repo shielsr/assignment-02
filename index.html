@@ -27,7 +27,8 @@
                 <div id="form-and-intro">
                     <p> Pick the flavours you want to see in your roll of pastilles. Choose your favourites, and leave
                         out the ones you don't like!</p>
-                                                <p id="live-count" class="">You have added <span id="live-count-number">0</span> of 12 pastilles.</p>
+                    <p id="live-count" class="">You have added <span id="live-count-number">0</span> of 12 pastilles.
+                    </p>
                     <form id="sweet-roll-generator">
                         <div id="flavour-form">
                             <label>
@@ -51,7 +52,7 @@
                             </label>
                             <input type="number" id="black-quantity" min="0" max="12" step="1" inputmode="numeric">
                         </div>
-                        <p><span id="error-message" class="error-text"></span></p>
+                        <p><span id="roll-error-message" class="roll-error-text"></span></p>
                         <button type="submit" class="button button-primary">Generate my roll</button>
                     </form>
                 </div>
@@ -63,27 +64,36 @@
             </div>
             <div id="section-2">
                 <h2>Order your pastilles</h2>
-                <form id="sweet-order-form">
+                <form id="sweet-order-form" novalidate>
                     <div id="order-form">
-                        <label>Your roll: </label>
-                        <p><span id="my-roll"></span></p>
+                        <label>Your roll: 
+                        <span id="my-roll"></span>
+                        </label>
                         <label>
                             Your full name:
-                        </label>
+                        
                         <input type="text" name="name" required>
+                        <span class="error-message" id="name-error"></span>
+                        </label>
                         <label>
                             Your address:
-                        </label>
+                        
                         <input type="text" name="address" required>
+                        <span class="error-message" id="address-error"></span>
+                        </label>
                         <label>
                             Email address:
-                        </label>
+                        
                         <input type="email" name="email" required>
+                        <span class="error-message" id="email-error"></span>
+                        </label>
                         <label>
                             Phone number
-                        </label>
+                        
                         <input type="tel" name="phone" required>
-                    </div>
+                        <span class="error-message" id="phone-error"></span>
+                    </label>
+                </div>
                     <button type="submit" class="button button-primary">Place order</button>
                 </form>
             </div>

@@ -88,19 +88,22 @@ form input {
   gap: 24px;
 }
 
+
 #order-form {
     max-width:600px;
-    display: grid;
-    grid-template-columns: 100px 1fr; /* 1 column for labels, 1 for inputs */
     gap: 24px;
 }
 
+#order-form label, #order-form input, #order-form .error-message {
+    display:block;
+    padding-bottom: 12px;
+}
 
 #results {
     padding-top:24px;
 }
 
-.error-text {
+.roll-error-text, .error-message {
     color:rgb(173, 0, 0);
     font-weight:600;
 }

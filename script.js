@@ -32,12 +32,12 @@ function liveCounting() {
     document.getElementById("live-count-number").innerText = valuesTotal();
     if (valuesTotal() > 12) {
         document.getElementById("live-count").classList.remove('success-text');
-        document.getElementById("live-count").classList.add('error-text');
+        document.getElementById("live-count").classList.add('roll-error-text');
     } else if (valuesTotal() === 12) {
-        document.getElementById("live-count").classList.remove('error-text');
+        document.getElementById("live-count").classList.remove('roll-error-text');
         document.getElementById("live-count").classList.add('success-text');
     } else if (valuesTotal() < 12) {
-        document.getElementById("live-count").classList.remove('error-text');
+        document.getElementById("live-count").classList.remove('roll-error-text');
         document.getElementById("live-count").classList.remove('success-text');
     }
 }
@@ -54,7 +54,7 @@ function generateRoll(event) {
         event.preventDefault();  // From the lecture, this stops the form resetting
     }
     const totalSweets = document.getElementById("total-sweets");
-    errorMessage = document.getElementById("error-message");
+    errorMessage = document.getElementById("roll-error-message");
 
     context.clearRect(0, 0, canvas.width, canvas.height); // Wipe the canvas clean each time
     document.getElementById("my-roll").innerText = ""; // Wipe the printed array text
@@ -128,22 +128,79 @@ function drawOnCanvas() {
 
 /* CANVAS END */
 
-function thanksForYourOrder(event) {
+
+/* FORM VALIDATION START */
+
+function errorCheckOnSubmit(event) {
     if (event) {
         event.preventDefault();  // From the lecture, this stops the form resetting
     }
-    alert("Thanks for your order!");
-}
+    
+    const form = event.target;
+    let valid = true;
 
+    // Get values
+    const name = form.name.value.trim();
+    const address = form.address.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+
+    // Patterns
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phonePattern = /^[0-9]{7,15}$/;
+
+    // Clear previous errors
+    document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
+
+
+    console.log("Name:", name);
+console.log("Address:", address);
+console.log("Email:", email);
+console.log("Phone:", phone);
+
+    // Validate name
+    if (name.length < 2) {
+        document.getElementById('name-error').textContent = "Please enter a valid full name.";
+        valid = false;
+    }
+
+    // Validate address
+    if (address.length < 5) {
+        document.getElementById('address-error').textContent = "Please enter a valid address.";
+        valid = false;
+    }
+
+    // Validate email
+    if (!emailPattern.test(email)) {
+        document.getElementById('email-error').textContent = "Please enter a valid email address.";
+        valid = false;
+    }
+
+    // Validate phone
+    if (!phonePattern.test(phone)) {
+        document.getElementById('phone-error').textContent = "Enter a valid phone number (7–15 digits).";
+        valid = false;
+    }
+
+    if (!valid) {
+        event.preventDefault(); // Prevent form submission
+    } else {
+        alert("Thanks for your order!");
+    }
+
+
+
+};
+
+
+/* FORM VALIDATION END */
 
 
 /* This init keeps things tidy */
 function init() {
     document.getElementById("sweet-roll-generator").addEventListener("submit", generateRoll);
-    document.getElementById("sweet-order-form").addEventListener("submit", thanksForYourOrder);
+    document.getElementById("sweet-order-form").addEventListener("submit", errorCheckOnSubmit);
     document.getElementById("flavour-form").addEventListener("input", liveCounting);
 }
 
 init();
-
-
