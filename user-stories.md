@@ -8,17 +8,26 @@ User roles:
 # Favourite flavours
 [MUST] As an existing fan, I want to create a bespoke packet of pastilles with my favourite flavours, so I can make the best possible packet for me.
 
+# Live count
+[MUST] As a user, I want a live count of how many pastilles I've added to my packet, so I don't have to backtrack and correct errors later.
+
+# Visual representation
+[MUST] As a user, I want to be able to see a mockup of the packet, so I know how it will look before I order it. 
+
+# Shipping
+[MUST] As any user type, I want to be able to ship my creation to myself, so I can eat what I have designed.
+
+
+# Future work
+
+# Gifting
+[SHOULD] As a gift giver, I want to be able to ship my creation to others as a gift, so that I can share my creation with loved ones.
+
 # Trying all flavours
 [SHOULD] As a brand new customer, I want to create a tube with a random combination of all flavours, so I can try all the flavours.
 
 # Health options
 [SHOULD] As a health-conscious customer, I want to have health-related options, so I can order a healthier version of the product.
-
-# Shipping
-[MUST] As any user type, I want to be able to ship my creation to myself, so I can eat what I have designed.
-
-# Gifting
-[SHOULD] As a gift giver, I want to be able to ship my creation to others as a gift, so that I can share my creation with loved ones.
 
 
 The pastille selection page will involved:

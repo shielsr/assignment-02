@@ -1,5 +1,11 @@
 # assignment-02
 
+# Website URL
+https://shielsr.github.io/assignment-02/
+
+# Github Repo
+https://github.com/shielsr/assignment-02
+
 ## Project goal
 The goal of the project is to allow users to create their own bespoke packet of pastille sweets. They can then place an order to have the packet delivered to their house or gift it to somebody else.
 
@@ -29,6 +35,7 @@ The goal of the project is to allow users to create their own bespoke packet of 
 - Added a 'live count' of the sweets as they're added along with error styling.
 - Replaced the vector rectangles on the canvas with PNG photos of actual pastilles. I removed the image backgrounds in Figma. I had to rewrite the entire 'drawPastille' function to work with images instead of vectors.
 - I started using if-else statements to call the different pngs, but it was too messy. Instead, I concatenated the image src using the colour parameter, which tidied up the function nicely.
+- Tidied up the javascript by replacing global variables (which I delcared at the top of the .js file) to functions, e.g. function `redValue()` instead of `let redValue`. This allowed me to remove the `getTotalAmounts()` function and have the input event listener directly trigger the `liveCounting()` function.
 
 ## Instructions
 
