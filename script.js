@@ -69,8 +69,8 @@ function generateRoll(event) {
     totalSweets.innerText = "Total sweets: " + valuesTotal();
     mapFlavours(); // Updates the myRoll array with the selected colours.
     drawOnCanvas(); // Draws the pastilles on the canvas.
-    document.getElementById("section-2").style.display = 'block'; // Reveal the order form
-    if (window.innerWidth <= 450) {
+    document.getElementById("order-form-container-div").style.display = 'block'; // Reveal the order form
+    if (window.innerWidth <= 830) {
         document.getElementById("results").scrollIntoView({ behavior: "smooth" }); // Autoscroll to the pastilles on mobile
     }
 }

@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Skip link */
 .skip {
     position: absolute;
@@ -24,7 +28,7 @@
 }
 
 body {
-    background-color: #e6edf5;
+    background-color: #267B3C;
     font-family: "Calibri", "Arial", serif;
     font-size: 18px;
     margin: 0px;
@@ -34,6 +38,8 @@ body {
 /* These bits are for the grid-template-areas in #wrapper */
 header {
     grid-area: header;
+    display:flex;
+    justify-content: center;
 }
 
 nav {
@@ -47,10 +53,68 @@ main {
 
 footer {
     grid-area: footer;
+    background-color:#8CC63F;
+    padding:24px;
 }
 
 
 
+
+/*  Nav link styling including states  */
+
+#navlinks {
+      top: 0;
+  overflow: hidden;
+    position:sticky;
+    background-color: #267B3C;
+}
+
+#navlinks ul {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+nav a {
+    display: block;
+    text-decoration: none;
+    font-size:18px;
+    font-weight:600;
+    padding: 16px 8px;
+    color: white;
+    transition: background-color 0.2s ease-out,
+        border-radius 1s ease,
+        color 0.2s ease-out,
+        font-size 3s ease-out;
+}
+
+nav a:hover {
+    background-color: #FFD927;
+    color: rgb(0, 0, 0);
+}
+
+a:focus,
+.buttonPrimary:focus,
+.buttonSecondary:focus {
+    outline: 2px solid black;
+}
+
+nav a:active {
+    background-color: #c8dcf1;
+}
+
+/* End nav link styling */
 
 #wrapper {
     padding: 0px 16px;
@@ -59,7 +123,7 @@ footer {
     margin-left: auto;
     margin-right: auto;
     display: grid;
-    grid-template-rows: 60px auto auto auto;
+    grid-template-rows: auto auto auto 200px;
     background-color: white;
     gap: 16px;
     grid-template-areas:
@@ -69,6 +133,13 @@ footer {
         "footer";
 }
 
+section {
+    padding: 56px 0px;
+}
+
+#pyop-logo {
+    height:200px;
+}
 
 /* Form */
 form label {
@@ -100,7 +171,7 @@ form input {
 }
 
 #results {
-    padding-top:24px;
+    padding-top:40px;
 }
 
 .roll-error-text, .error-message {
@@ -115,25 +186,28 @@ form input {
 
 .button {
     padding: 12px 80px;
+    font-weight:600;
     font-size:16px;
     border-radius: 8px;
     border:0px;
     margin: 24px 0px;
 }
 
-.button-primary:hover {
-    background-color: #0d0d9c;
+.button-primary {
+    background-color: #8438A3;
     color:white;
+}
+
+.button-primary:hover {
+    background-color: #59256e;
+    color: white;
 }
 
 .button-primary:focus {
     outline: 2px solid black;
 }
 
-.button-primary {
-    background-color: #000066;
-    color:white;
-}
+
 
 .button-secondary {
     background-color: aquamarine;
@@ -159,14 +233,19 @@ form input {
     background-size: contain;
 }
 
-#section-2 {
+.emphasis {
+    font-style:italic;
+    font-weight:600;
+}
+
+#order-form-container-div {
     display:none;
     height: auto;
 }
 
 /* Tablet breakpoint */
 
-@media (min-width: 450px) {
+@media (min-width: 480px) {
     body {
         margin: 0px 24px;
         max-width: 1142px;
@@ -176,20 +255,13 @@ form input {
 
     #wrapper {
         padding: 0px 24px;
-        grid-template-rows: 96px auto auto auto;
-
     }
 
-    #form-and-results
-    {
-        display:grid;
-        grid-template-columns: 50% 50%;
-        grid-template-rows: auto auto;
-        background-color: white;
-        gap: 40px;
 
+    nav a {
+        font-size:20px;
+        padding: 16px 32px;
     }
-
 }
 
 
@@ -203,16 +275,23 @@ form input {
         margin-right: auto;
     }
 
-    #wrapper {
-        margin: 0px 24px;
-        display: grid;
-        grid-template-rows: 160px auto auto;
-        grid-template-columns: 140px auto;
+#wrapper {
+    padding: 0px 40px;
+}
+
+    #form-and-results
+    {
+        display:grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto;
         background-color: white;
-        gap: 24px;
-        grid-template-areas:
-            "header header"
-            "nav main"
-            "footer footer";
+        gap: 40px;
+
     }
+
+#pyop-logo {
+    height:400px;
+}
+
+
 }
