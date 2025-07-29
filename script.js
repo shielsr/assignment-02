@@ -165,7 +165,7 @@ function errorCheckOnSubmit(event) {
 
     // Patterns
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phonePattern = /^[0-9]{7,15}$/;
+    const phonePattern = /^[0-9]{6,14}$/;
 
     // Clear previous errors
     document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
@@ -196,7 +196,7 @@ console.log("Phone:", phone);
 
     // Validate phone
     if (!phonePattern.test(phone)) {
-        document.getElementById('phone-error').textContent = "Enter a valid phone number (7–15 digits).";
+        document.getElementById('phone-error').textContent = "Enter a valid phone number (6–14 digits).";
         valid = false;
     }
 
