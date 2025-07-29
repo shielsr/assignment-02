@@ -1,40 +1,41 @@
 # My design decisions
-## User stories, wireframes, user journeys and more
+## User stories
 
-User roles:
+### Roles:
 - Existing fan of pastilles
 - Brand new customer
 - Health-conscious customer
 - Gift giver
 
+### User stories:
 
-### Favourite flavours
+#### Favourite flavours
 [MUST] As an existing fan, I want to create a bespoke packet of pastilles with my favourite flavours, so I can make the best possible packet for me.
 
-### Live count
+#### Live count
 [MUST] As a user, I want a live count of how many pastilles I've added to my packet, so I don't have to backtrack and correct errors later.
 
-### Visual representation
+#### Visual representation
 [MUST] As a user, I want to be able to see a mockup of the packet, so I know how it will look before I order it. 
 
-### Shipping
+#### Shipping
 [MUST] As any user type, I want to be able to ship my creation to a real-world address, so I or a loved one can eat what I have designed.
 
 
-## Future work
+### Future work:
 I did not cater for the following user stories in this version of the website, as they are beyond the scope of the assignment.
 
-### Gifting
+#### Gifting
 [SHOULD] As a gift giver, I want to be able to ship my creation to others as a gift, so that I can share my creation with loved ones.
 
-### Trying all flavours
+#### Trying all flavours
 [SHOULD] As a brand new customer, I want to auto-generate a tube with a random combination of all flavours, so I can try all the flavours.
 
-### Health options
+#### Health options
 [SHOULD] As a health-conscious customer, I want to have health-related options, so I can order a healthier version of the product.
 
-
-The pastille selection page will involved:
+## Content
+The pastille selection page will include:
 - A form asking for the quantity of: 
     - Red
     - Yellow
@@ -93,41 +94,9 @@ The following is a step-by-step account of how I did the project, which closely 
 - Replaced the vector rectangles on the canvas with PNG photos of actual pastilles. I removed the image backgrounds in Figma. I had to rewrite the entire `drawPastille()` function to work with images instead of vectors.
 - I started using if-else statements to call the different pngs, but it was too messy. Instead, I concatenated the image src using the colour parameter, which tidied up the function nicely.
 - Tidied up the javascript by replacing global variables (which I delcared at the top of the .js file) to functions, e.g. function `redValue()` instead of `let redValue`. This allowed me to remove the `getTotalAmounts()` function and have the input event listener directly trigger the `liveCounting()` function.
-- Added proper validation to the order form for name, address, email and phone. In the interests of speed I grabbed standard validation code and used it here.
+- My order form relied on browser validation, but it was recommended that I add full javascript validation for name, address, email and phone. In the interests of speed I researched & used standard form validation code, tweaking it to suit my project.
 - Fleshed out the structure of the HTML, adding in new sections and autoscroll nav links. Also did an overhaul of the CSS to improve the design and UX/UI, including focus and hover states on the buttons and alt tags on the logo.
-- I wanted to demonstrate that I could add and remove elements using `.createElement`, `.appendChild` and `.removeChild`, so I refactored the warning that appears in the Order section (before the user has generated a roll). It's no the most efficient use of .createElement (I realise it's easier to just hard code it) but I wanted to use add it with javascript purely for demo purposes.
-
-
-
-# Instructions on how to use the site
-
-## Navbar
-This is a one-page website. Use the three buttons in the navbar to autoscroll up and down to anchor links within the page.
-
-![Navbar and introduction section](docs/instructions/image01.jpg)
-
-##  'Create' form
-Use the 'Create' form to define how many of each pastille flavour your want. A live tracker at the top shows how many sweets you need to add/remove to hit the target of 12.
-Press the CTA button when your roll is ready.
-
-![Form for creating your roll of pastilles](docs/instructions/image02.jpg)  ![Form with error message](docs/instructions/image03.jpg)
-
-
-## Canvas with roll
-On a successful form submission, a mockup of the user's pastille roll is generated in the canvas. On mobile, the user is autoscrolled down to the canvas. The individual pastilles are pngs of actual pastilles that I photographed and cropped.
-
-![Canvas with pastille roll mockup](docs/instructions/image05.jpg)
-
-## Order form
-If the user is happy with their creation, they can go to the order form and get their pastille roll delivered to an address of their choice. Includes validation. On a successful submission, an alert pops up (I haven't created any database for storing the data).
-
-![Blank order form](docs/instructions/image06.jpg)  ![Form with validation errors](docs/instructions/image07.jpg)  ![Alert popup with success message](docs/instructions/image08.jpg)
-
-## Order form prior to roll generation
-It's worth noting that a warning box appears in the Order section prior to generating a pastille roll. This is added & removed via Javascript.
-
-![Warning box prior to generating pastilles](docs/instructions/image09.jpg)
-
+- I wanted to demonstrate that I could add and remove elements using `.createElement`, `.appendChild` and `.removeChild`, so I refactored the warning that appears in the Order section (before the user has generated a roll). It's not the most effective use of .createElement (I realise it's easier to just hard code it) but I wanted to use add it with javascript purely for demo purposes.
 
 # Challenges faced
 
