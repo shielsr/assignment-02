@@ -56,8 +56,20 @@ I created basic wireframes in Figma for mobile and desktop, with the mobile layo
 
 ![Mobile wireframe](docs/wireframes/wireframe-mobile.jpg)  ![Desktop wireframe](docs/wireframes/wireframe-desktop.jpg)
 
-## User journeys
+## User journey happy path
+The happy path involves the user reaching the 'Create' form, selecting their desired flavours, generating the mockup of the pastilles and then placing an order.
 
+### Step 01: User navigates to the 'Create' form
+![Step one](docs/wireframes/step01.jpg)
+
+### Step 02: User enters their desired flavours
+![Step two](docs/wireframes/step02.jpg)
+
+### Step 03: Mockup generated
+![Step three](docs/wireframes/step03.jpg)
+
+### Step 04: 'Order' form
+![Step four](docs/wireframes/step04.jpg)
 
 
 
