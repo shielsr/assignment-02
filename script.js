@@ -48,6 +48,22 @@ function liveFeedback(element_id_as_text, remove_selector, add_selector){
 	document.getElementById(element_id_as_text).classlist.add(add_selector);
 }
 
+/* Adding the pre-order warning box to the DOM */
+function createPreOrderBox() {
+    const preOrderBox = document.createElement("p")
+    preOrderBox.textContent = "You need to generate a roll of pastilles above before you can place an order."
+    preOrderBox.classList.add("warning-box");
+    preOrderBox.id = "pre-order-warning-box";
+    document.getElementById('pre-order-message').appendChild(preOrderBox);
+}
+
+/* Removing the pre-order warning box from the DOM */
+function removePreOrderBox() {
+    const parent = document.getElementById("pre-order-message");
+    const child = document.getElementById("pre-order-warning-box");
+    parent.removeChild(child);
+}
+
 /* The main function, triggered by the main button */
 function generateRoll(event) {
     if (event) {
@@ -69,10 +85,12 @@ function generateRoll(event) {
     totalSweets.innerText = "Total sweets: " + valuesTotal();
     mapFlavours(); // Updates the myRoll array with the selected colours.
     drawOnCanvas(); // Draws the pastilles on the canvas.
+    removePreOrderBox(); // Remove the warning box in the Order section.
     document.getElementById("order-form-container-div").style.display = 'block'; // Reveal the order form
     if (window.innerWidth <= 830) {
         document.getElementById("results").scrollIntoView({ behavior: "smooth" }); // Autoscroll to the pastilles on mobile
     }
+
 }
 
 
@@ -201,6 +219,7 @@ function init() {
     document.getElementById("sweet-roll-generator").addEventListener("submit", generateRoll);
     document.getElementById("sweet-order-form").addEventListener("submit", errorCheckOnSubmit);
     document.getElementById("flavour-form").addEventListener("input", liveCounting);
+    createPreOrderBox();
 }
 
 init();

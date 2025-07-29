@@ -14,9 +14,8 @@ The goal of the project is to allow users to create their own bespoke packet of 
 - Choose what flavours are included in their packet
 - Choose the quantity of each flavour
 - Randomise the order of sweets in the packet
+- Get error feedback when choosing too few/many sweets
 - Order your desired packet to your home
-- Gift your creation to someone else
-- Order healtheir versions
 
 
 ## How I went about it
@@ -37,7 +36,8 @@ The goal of the project is to allow users to create their own bespoke packet of 
 - I started using if-else statements to call the different pngs, but it was too messy. Instead, I concatenated the image src using the colour parameter, which tidied up the function nicely.
 - Tidied up the javascript by replacing global variables (which I delcared at the top of the .js file) to functions, e.g. function `redValue()` instead of `let redValue`. This allowed me to remove the `getTotalAmounts()` function and have the input event listener directly trigger the `liveCounting()` function.
 - Added proper validation to the order form for name, address, email and phone. In the interests of speed I grabbed standard validation code and used it here.
-
+- Fleshed out the structure of the HTML, adding in new sections and autoscroll nav links. Also did an overhaul of the CSS to improve the design and UX/UI, including focus and hover states on the buttons and alt tags on the logo.
+- I wanted to demonstrate that I could add and remove elements using `.createElement`, `.appendChild` and `.removeChild`, so I refactored the warning that appears in the Order section (before the user has generated a roll). It's no the most efficient use of .createElement (I realise it's easier to just hard code it) but I wanted to use add it with javascript purely for demo purposes.
 
 ## Instructions
 

@@ -67,6 +67,7 @@ footer {
   overflow: hidden;
     position:sticky;
     background-color: #267B3C;
+    border-radius:12px;
 }
 
 #navlinks ul {
@@ -77,17 +78,12 @@ footer {
     justify-content: space-around;
 }
 
-nav ul {
-    padding: 0px;
-    margin: 0px;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
-}
 
 
 nav a {
     display: block;
+    border-radius:12px;
+    margin:4px;
     text-decoration: none;
     font-size:18px;
     font-weight:600;
@@ -107,11 +103,11 @@ nav a:hover {
 a:focus,
 .buttonPrimary:focus,
 .buttonSecondary:focus {
-    outline: 2px solid black;
+    outline: 3px solid black;
 }
 
 nav a:active {
-    background-color: #c8dcf1;
+    background-color: #e6c223;
 }
 
 /* End nav link styling */
@@ -241,6 +237,12 @@ form input {
 #order-form-container-div {
     display:none;
     height: auto;
+}
+
+.warning-box {
+    padding:24px;
+    background-color: #DD581E;
+    color:white;
 }
 
 /* Tablet breakpoint */
