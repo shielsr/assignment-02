@@ -12,8 +12,8 @@
 #### 1. Favourite flavours
 [MUST] As an existing fan, I want to create a bespoke packet of pastilles with my favourite flavours, so I can make the best possible packet for me.
 
-#### 2. Live count
-[MUST] As a user, I want a live count of how many pastilles I've added to my packet, so I don't have to backtrack and correct errors later.
+#### 2. Live counter
+[MUST] As a user, I want a live counter of how many pastilles I've added to my packet, so I don't have to backtrack and correct errors later.
 
 #### 3. Visual representation
 [MUST] As a user, I want to be able to see a mockup of the packet, so I know how it will look before I order it. 
@@ -43,14 +43,16 @@ The page will include:
     - Green
     - Orange
     - Black
-- A 'Generate' button to put the options together into an array.
-- A visual representation of the roll of pastilles.
+ - A visual representation of the roll of pastilles.
+ - An order form.
+
 
 
 ## Prioritised tasks:
-1. Create a html page with a form allowing the user to set the amount of each flavour of pastille they'd like per pack using dropdowns.
-2. The packet must contain a max number of sweets (12)
-3. Create a 'step 2' order shipping form.
+1. Create a html page with a form allowing the user to set the amount of each flavour of pastille they'd like.
+2. The form must have constraints so that the packet contains exactly 12 sweets.
+3. Use a `<canvas>` to show a mockup of the pastilles. 
+3. Create a 'Step 2' order shipping form.
 
 ## Wireframes
 
@@ -82,7 +84,7 @@ The following is a step-by-step account of how I did the project, which closely 
 
 - I started with a simple form with 2 dropdowns and a submit button. I followed the Week 7 Unit 12 lecture recording to create the JS, adding event listeners etc.
 - Once that worked, I wanted to put a max of 10 on the total with a warning message.
-- Then I wanted to create a new array containing the amounts of flavours, e.g. if the user selected 3 reds and 2 blues then the array would be red, red, red, blue, blue. I read up on how to map one array into another. I went with a forEach and a for loop.
+- Then I wanted to create a new array containing the amounts of flavours, e.g. if the user selected 3 reds and 2 blues then the array would be red, red, red, blue, blue. I rewatched the lectures on loops and researched how to map one array into another. I went with a forEach and a for loop.
 - I wanted to randomise the order of the flavours in the array, so it was more like a real roll of sweets. I researched it and found the Fisher-Yates function.
 - The HTML for the dropdowns was becoming unwieldy, so I looked up other options. I went with the numerical stepper instead of dropdowns.
 - I wanted to make a visual/graphical representation of the roll of pastilles. I considered using SVGs but thought it was a good opportunity to use what was covered in the Canvas lessson (Week 9). I worked on 'drawing' the pastilles onto the canvas based on the array.
@@ -98,13 +100,14 @@ The following is a step-by-step account of how I did the project, which closely 
 - My order form relied on browser validation, but it was recommended that I add full javascript validation for name, address, email and phone. In the interests of speed I researched & used standard form validation code, tweaking it to suit my project.
 - Fleshed out the structure of the HTML, adding in new sections and autoscroll nav links. Also did an overhaul of the CSS to improve the design and UX/UI, including focus and hover states on the buttons and alt tags on the logo.
 - I wanted to demonstrate that I could add and remove elements using `.createElement`, `.appendChild` and `.removeChild`, so I refactored the warning that appears in the Order section (before the user has generated a roll). It's not the most effective use of .createElement (I realise it's easier to just hard code it) but I wanted to use add it with javascript purely for demo purposes.
+- Did a final tidy-up of my code and completed the documentation.
 
 # Challenges faced
 
 Some challenges I faced include:
 
 ## Adding images to the canvas
-I initially drew simple rectangles to the canvas to represent the pastilles, but I wanted to challenge myself and use real photos of pastilles instead. So, I took photos & cropped them in Figma. The biggest challange was figuring out how to add pngs to the canvas. I initially had a huge function full of if/else statements, but then I realised I could just pass a 'colour' parameter into the filenames & call the image that way.
+I initially drew simple rectangles to the `<canvas>` to represent the pastilles, but I wanted to challenge myself and use real photos of pastilles instead. So, I took photos & cropped them in Figma. The biggest challange was figuring out how to add pngs to the canvas. Once I got it working, I then had a huge function full of if/else statements. I simplified the function when I realised I could just pass a 'colour' parameter into the `src` filename & call the image that way.
 
 ## Spelling out the flavours
 Probably the biggest challenge was figuring out the `mapFlavours()` function. My goal was to have the 12 chosen pastilles listed in an array as a series of strings, e.g. `[red, red, green, green, green, ...etc.]`. I went back to the lectures on forEach loops and pushing into arrays, and eventually did a `for` loop inside a `forEach` loop.
@@ -121,7 +124,7 @@ The form for choosing the flavours has a live counter at the top. I used  `.inne
 In the live counter, if the total goes over or under 12, I use `.classList.add` and `.classList.remove` to change the CSS class on the counter, turning it red or green.
 
 ## Adding the 'Warning' box
-When the page loads, I use `.createElement` and `.appendChild` to add a warning box in the 'Order' section. It would have been easier to hard code the box in the HTML, but I wanted to demonstrate that I could do it. 
+When the page loads, I use `.createElement` and `.appendChild` to add a warning box in the 'Order' section. It would have been easier to hard code the box in the HTML, but I wanted to demonstrate that I could add/remove elements this way.
 
 ![Warning box prior to generating pastilles](docs/instructions/image09.jpg)
 
@@ -133,4 +136,5 @@ I take the array of pastilles generated by the 'Create' form and print them into
 
 ![Printing the array of pastilles at the top of the order form](docs/instructions/image10.jpg)
 
-
+## Revealing the 'Order' form 
+When the user generates their pastilles, the 'Order' form is revealed using `.style.display = "block"`

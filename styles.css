@@ -112,6 +112,17 @@ nav a:active {
 
 /* End nav link styling */
 
+#intro-two-cols { 
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}   
+
+
+#photo-of-roll {
+    width:100%;
+
+}
 
 .unordered-list li {
     padding-bottom: 12px;
@@ -175,7 +186,7 @@ form input {
     padding-top:40px;
 }
 
-.roll-error-text, .error-message {
+.error-message, .error-message-order-form {
     color:rgb(173, 0, 0);
     font-weight:600;
 }
