@@ -21,12 +21,6 @@ function valuesTotal(){
 }
 
 
-/* Sum the total of all inputted numbers */
-function getTotalAmounts() {
-   // valuesTotal = redValue + yellowValue + greenValue + orangeValue + blackValue;
-    liveCounting();
-}
-
 /* Updating the count in real time */
 function liveCounting() {
     document.getElementById("live-count-number").innerText = valuesTotal();
@@ -42,11 +36,6 @@ function liveCounting() {
     }
 }
 
-function liveFeedback(element_id_as_text, remove_selector, add_selector){
-	console.log(element_id_as_text, remove_selector, add_selector);
-    document.getElementById(element_id_as_text).classlist.remove(remove_selector);
-	document.getElementById(element_id_as_text).classlist.add(add_selector);
-}
 
 /* Adding the pre-order warning box to the DOM */
 function createPreOrderBox() {
@@ -64,22 +53,46 @@ function removePreOrderBox() {
     parent.removeChild(child);
 }
 
+/* Adding the flavour form error to the DOM 
+function createPastilleError(text) {
+    const pastilleError = document.createElement("span")
+    pastilleError.textContent = text;
+    pastilleError.classList.add("roll-error-text");
+    pastilleError.id = "roll-error-span";
+    document.getElementById("roll-error-message").appendChild(pastilleError);
+}
+*/
+
+function writePastilleError(text) {
+    const pastilleError = document.createElement("span")
+    pastilleError.textContent = text;
+    pastilleError.classList.add("roll-error-text");
+    pastilleError.id = "roll-error-span";
+    document.getElementById("roll-error-message").appendChild(pastilleError);
+}
+
+/* Removing the flavour form error from the DOM 
+function removePastilleError() {
+    const parent = document.getElementById("roll-error-message");
+    const child = document.getElementById("roll-error-span");
+    parent.removeChild(child);
+}
+*/
+
 /* The main function, triggered by the main button */
 function generateRoll(event) {
     if (event) {
         event.preventDefault();  // From the lecture, this stops the form resetting
     }
     const totalSweets = document.getElementById("total-sweets");
-    errorMessage = document.getElementById("roll-error-message");
-
     context.clearRect(0, 0, canvas.width, canvas.height); // Wipe the canvas clean each time
     document.getElementById("my-roll").innerText = ""; // Wipe the printed array text
 
-    errorMessage.innerText = ""; // Wipe the error text
+ 
     if (valuesTotal() > 12) {
-        return errorMessage.innerText = "Warning - maximum number of sweets in a roll is 12. Please remove " + (valuesTotal() - 12) + " sweets.";
+        writePastilleError("Warning - maximum number of sweets in a roll is 12. Please remove " + (valuesTotal() - 12) + " sweets.");
     } else if (valuesTotal() < 12) {
-        return errorMessage.innerText = "Warning - minimum number of sweets is 12.\n Please add " + (12 - valuesTotal()) + " more.";
+        writePastilleError("Warning - minimum number of sweets is 12.\n Please add " + (12 - valuesTotal()) + " more.");
     }
 
     totalSweets.innerText = "Total sweets: " + valuesTotal();
