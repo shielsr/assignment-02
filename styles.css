@@ -112,6 +112,11 @@ nav a:active {
 
 /* End nav link styling */
 
+
+.unordered-list li {
+    padding-bottom: 12px;
+}
+
 #wrapper {
     padding: 0px 16px;
     min-height: 100vh;

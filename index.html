@@ -28,12 +28,13 @@
         <main>
             <section id="introduction-section">
                 <h1>Pick your own pastilles</h1>
-                <p>We all have our favourite flavours of pastille.</p>
-                <p>But, did you ever buy a packet and wish it had <span class="emphasis">more</span> of your favourites?
-                </p>
-                <p>Imagine: You tear open a roll of pastilles and it contains nothing but your favourite flavour!</p>
-                <p>Today, you can build your own <span class="emphasis">perfect packet of pastilles.</span> Never be
-                    disappointed again!</p>
+                <ul class="unordered-list">
+                    <li>We all have our favourite flavours of pastille.</li>
+                   <li>But, did you ever buy a packet and wish it had <span class="emphasis">more</span> of your favourites?</li>
+                    <li>Imagine: You tear open a roll of pastilles and it contains nothing but your favourite flavour!</li>
+                    <li>Today, you can build your own <span class="emphasis">perfect packet of pastilles.</span> Never be
+                    disappointed again!</li>
+                </ul>
             </section>
             <section id="create-roll-section">
                 <h2>Create your perfect roll of pastilles!</h2>
@@ -69,8 +70,8 @@
                                 <input type="number" id="black-quantity" min="0" max="12" step="1" inputmode="numeric">
                             </div>
                             <p><span id="roll-error-message" class="roll-error-text"></span></p>
-                            <button type="submit" class="button button-primary">Generate my roll</button>
-                        </form>
+                                <button type="submit" class="button button-primary">Generate my roll</button>
+                            </form>
                     </div>
                     <div id="results">
                         <canvas height="570" width="300" id="pastille-roll"></canvas>
@@ -81,7 +82,7 @@
             </section>
             <section id="order-form-section">
                 <h2>Order your pastilles</h2>
-                <p>You need to generate your roll of pastilles above before you can place an order.</p>
+                <div id="pre-order-message"></div>
                 <div id="order-form-container-div">
                     <form id="sweet-order-form" novalidate>
                         <div id="order-form">
